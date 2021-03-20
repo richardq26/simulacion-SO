@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="esta" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5e47fece-01ee-4c4b-a0e3-3e936329e1e6">
+	<property name="template.type" value="columnar"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="esta" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select fallas.id_aula,  fallas.id_equipo,
+fallas.descripcion, fallas.user from fallas
+where fallas.tipo=$P{esta}]]>
+	</queryString>
+	<field name="id_aula" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_equipo" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="user" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="Group2">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/5)]]></groupExpression>
+		<groupHeader>
+			<band height="16"/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<image>
+				<reportElement uuid="88cdcc20-d2e9-470c-966e-62fa9c40f604" x="10" y="10" width="97" height="101"/>
+				<imageExpression><![CDATA["C:\\Users\\cristian\\Music\\Mantenimiento\\src\\Imagenes\\logofci.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="601af694-1f04-4cff-adcd-02faf7c1d459" style="Title" x="106" y="27" width="449" height="80" forecolor="#9999FF"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="48" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Reporte de Equipos]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="911c3cae-d1e5-43f6-8d04-8ca58068b8a5" mode="Opaque" x="-18" y="120" width="595" height="12" forecolor="#9999FF" backcolor="#009999"/>
+			</rectangle>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="270" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="720a9be0-adcd-4ebf-ab13-8fc5b3530ed2" style="Title" x="386" y="30" width="87" height="20" forecolor="#3300FF" backcolor="#000000"/>
+				<textElement>
+					<font fontName="Sylfaen" size="14" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[DETALLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2a46b8df-05b8-43a6-b40b-d8dd02b33a1e" style="Title" x="10" y="59" width="76" height="20" forecolor="#3300FF" backcolor="#000000"/>
+				<textElement>
+					<font fontName="Sylfaen" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EQUIPO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="76cbbba2-f3be-479c-aa00-afb5d2850a80" style="Title" x="10" y="10" width="134" height="20" forecolor="#3300FF" backcolor="#000000"/>
+				<textElement>
+					<font fontName="Sylfaen" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LABORATORIO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e8df0e27-cd68-419a-aea5-2117335b810d" style="Title" x="10" y="105" width="87" height="20" forecolor="#3300FF" backcolor="#000000"/>
+				<textElement>
+					<font fontName="Sylfaen" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[USUARIO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="57fb89cb-a2db-4ac8-a169-86a10d250a35" style="Column header" x="155" y="10" width="138" height="20" backcolor="#FF3300"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{id_aula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7f3e6258-7463-409a-a232-956691926d8d" style="Column header" x="155" y="65" width="138" height="20" backcolor="#FF3300"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{id_equipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cbf30d8e-e8e6-423e-b995-4add71e06170" style="Column header" x="401" y="65" width="138" height="20" backcolor="#FF3300"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="824c2c04-1f3c-4c59-a93c-263cfe51e1f0" style="Column header" x="155" y="105" width="138" height="20" backcolor="#FF3300"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{user}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="911c3cae-d1e5-43f6-8d04-8ca58068b8a5" mode="Opaque" x="-18" y="158" width="595" height="12" forecolor="#9999FF" backcolor="#009999"/>
+			</rectangle>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="56" splitType="Stretch">
+			<line>
+				<reportElement uuid="51335697-f8e8-4f53-9e7d-eceac0202548" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="64" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

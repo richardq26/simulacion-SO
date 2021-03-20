@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="boletos" language="groovy" printOrder="Horizontal" pageWidth="400" pageHeight="280" orientation="Landscape" columnWidth="360" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="176a93fc-d58a-4d46-8775-514a5615500d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="IdBoleto" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     boletos.`IdBoleto` AS boletos_IdBoleto,
+     boletos.`IdUsuario` AS boletos_IdUsuario,
+     boletos.`IdBus` AS boletos_IdBus,
+     boletos.`IdRuta` AS boletos_IdRuta,
+     boletos.`IdCliente` AS boletos_IdCliente,
+     boletos.`NPasajes` AS boletos_NPasajes,
+     boletos.`NAsientos` AS boletos_NAsientos,
+     boletos.`Fecha` AS boletos_Fecha,
+     boletos.`Salida` AS boletos_Salida,
+     boletos.`Descuento` AS boletos_Descuento,
+     boletos.`Total` AS boletos_Total,
+     boletos.`Subtotal` AS boletos_Subtotal,
+     usuarios.`IdUsuario` AS usuarios_IdUsuario,
+     usuarios.`Dominio` AS usuarios_Dominio,
+     buses.`IdBus` AS buses_IdBus,
+     rutas.`IdRuta` AS rutas_IdRuta,
+     rutas.`CiudadOrigen` AS rutas_CiudadOrigen,
+     rutas.`CiudadDestino` AS rutas_CiudadDestino,
+     rutas.`Precio` AS rutas_Precio,
+     clientes.`IdCliente` AS clientes_IdCliente,
+     clientes.`Cedula` AS clientes_Cedula,
+     clientes.`Nombres` AS clientes_Nombres,
+     clientes.`Apellidos` AS clientes_Apellidos,
+     clientes_A.`IdCliente` AS clientes_A_IdCliente,
+     clientes_A.`Nombres` AS clientes_A_Nombres,
+     clientes_A.`Apellidos` AS clientes_A_Apellidos
+FROM
+     `usuarios` usuarios INNER JOIN `boletos` boletos ON usuarios.`IdUsuario` = boletos.`IdUsuario`
+     INNER JOIN `buses` buses ON boletos.`IdBus` = buses.`IdBus`
+     INNER JOIN `rutas` rutas ON boletos.`IdRuta` = rutas.`IdRuta`
+     INNER JOIN `clientes` clientes ON boletos.`IdCliente` = clientes.`IdCliente`
+     INNER JOIN `clientes` clientes_A ON boletos.`IdCliente` = clientes_A.`IdCliente`
+WHERE
+     $P{IdBoleto} = boletos.IdBoleto]]>
+	</queryString>
+	<field name="boletos_IdBoleto" class="java.lang.Long"/>
+	<field name="boletos_IdUsuario" class="java.lang.Long"/>
+	<field name="boletos_IdBus" class="java.lang.Long"/>
+	<field name="boletos_IdRuta" class="java.lang.Long"/>
+	<field name="boletos_IdCliente" class="java.lang.Long"/>
+	<field name="boletos_NPasajes" class="java.lang.Long"/>
+	<field name="boletos_NAsientos" class="java.lang.String"/>
+	<field name="boletos_Fecha" class="java.lang.String"/>
+	<field name="boletos_Salida" class="java.lang.String"/>
+	<field name="boletos_Descuento" class="java.lang.Float"/>
+	<field name="boletos_Total" class="java.lang.Float"/>
+	<field name="boletos_Subtotal" class="java.lang.Float"/>
+	<field name="usuarios_IdUsuario" class="java.lang.Long"/>
+	<field name="usuarios_Dominio" class="java.lang.String"/>
+	<field name="buses_IdBus" class="java.lang.Long"/>
+	<field name="rutas_IdRuta" class="java.lang.Long"/>
+	<field name="rutas_CiudadOrigen" class="java.lang.String"/>
+	<field name="rutas_CiudadDestino" class="java.lang.String"/>
+	<field name="rutas_Precio" class="java.lang.Float"/>
+	<field name="clientes_IdCliente" class="java.lang.Long"/>
+	<field name="clientes_Cedula" class="java.lang.Long"/>
+	<field name="clientes_Nombres" class="java.lang.String"/>
+	<field name="clientes_Apellidos" class="java.lang.String"/>
+	<field name="clientes_A_IdCliente" class="java.lang.Long"/>
+	<field name="clientes_A_Nombres" class="java.lang.String"/>
+	<field name="clientes_A_Apellidos" class="java.lang.String"/>
+	<title>
+		<band height="64" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="0b0e52c5-433f-4716-93e2-c898cc4fd824" x="1" y="-2" width="360" height="66" forecolor="#0033CC"/>
+				<graphicElement>
+					<pen lineWidth="1.25" lineStyle="Double" lineColor="#0033CC"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="52edac6e-9054-477d-97cb-30bc9c9957c4" x="34" y="-2" width="300" height="17"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[COOPERATIVA DE TRANSPORTE "LOS ÁNGELES"]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="da08f0be-d5a8-4f41-88d7-303a8f17d368" x="150" y="27" width="79" height="35"/>
+				<imageExpression><![CDATA["C:\\Users\\Mauricio\\Documents\\NetBeansProjects\\BOLTENC\\src\\imagenes\\logoBUS.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="52edac6e-9054-477d-97cb-30bc9c9957c4" x="34" y="14" width="300" height="17"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[EMISIÓN DE BOLETO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="171" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="f64bcc82-319c-4564-aaa4-f9519a8d152d" x="10" y="4" width="45" height="20"/>
+				<textElement/>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f64bcc82-319c-4564-aaa4-f9519a8d152d" x="10" y="25" width="45" height="20"/>
+				<textElement/>
+				<text><![CDATA[N° Bus:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f64bcc82-319c-4564-aaa4-f9519a8d152d" x="206" y="4" width="56" height="20"/>
+				<textElement/>
+				<text><![CDATA[N° Boleto:]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement uuid="693f5e69-9ecc-44d3-ab26-3d9b2d19923e" x="262" y="22" width="55" height="19"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="2of7" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA["1234"]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<rectangle>
+				<reportElement uuid="0b0e52c5-433f-4716-93e2-c898cc4fd824" x="1" y="45" width="360" height="60" forecolor="#0033CC"/>
+				<graphicElement>
+					<pen lineWidth="1.25" lineStyle="Double" lineColor="#0033CC"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="f64bcc82-319c-4564-aaa4-f9519a8d152d" x="10" y="45" width="45" height="20"/>
+				<textElement/>
+				<text><![CDATA[Agente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f64bcc82-319c-4564-aaa4-f9519a8d152d" x="10" y="65" width="45" height="20"/>
+				<textElement/>
+				<text><![CDATA[Cliente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f64bcc82-319c-4564-aaa4-f9519a8d152d" x="10" y="85" width="45" height="20"/>
+				<textElement/>
+				<text><![CDATA[Ruta:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f64bcc82-319c-4564-aaa4-f9519a8d152d" x="206" y="45" width="56" height="20"/>
+				<textElement/>
+				<text><![CDATA[Precio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f64bcc82-319c-4564-aaa4-f9519a8d152d" x="206" y="65" width="56" height="20"/>
+				<textElement/>
+				<text><![CDATA[Cantidad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f64bcc82-319c-4564-aaa4-f9519a8d152d" x="206" y="85" width="56" height="20"/>
+				<textElement/>
+				<text><![CDATA[Asiento(s):]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="0b0e52c5-433f-4716-93e2-c898cc4fd824" x="204" y="105" width="157" height="66" forecolor="#0033CC"/>
+				<graphicElement>
+					<pen lineWidth="1.25" lineStyle="Double" lineColor="#0033CC"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="f64bcc82-319c-4564-aaa4-f9519a8d152d" x="206" y="113" width="56" height="20"/>
+				<textElement/>
+				<text><![CDATA[Subtotal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f64bcc82-319c-4564-aaa4-f9519a8d152d" x="206" y="132" width="76" height="20"/>
+				<textElement/>
+				<text><![CDATA[Descuento: (-)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f64bcc82-319c-4564-aaa4-f9519a8d152d" x="206" y="151" width="76" height="20"/>
+				<textElement/>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="80ce630c-5b50-45b4-bacb-c51f20f6042e" x="55" y="120" width="95" height="50"/>
+				<imageExpression><![CDATA["C:\\Users\\Mauricio\\Documents\\NetBeansProjects\\BOLTENC\\src\\imagenes\\bolETO.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement uuid="a143f6ff-2248-47e2-868e-777da99de1f4" x="55" y="4" width="149" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{boletos_Salida}+" "+$F{boletos_Fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2fa5de95-a267-48f3-baca-5b61dfce223b" x="55" y="25" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{buses_IdBus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6d4a3624-bf3b-4642-959d-7c3d81fa8eb6" x="262" y="5" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{boletos_IdBoleto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2cc9b78d-c016-4d9e-998a-7049095c85db" x="55" y="45" width="149" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{usuarios_Dominio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c229ff64-ad69-4ddd-a207-ad63a78b6776" x="55" y="65" width="149" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{clientes_Nombres}+" "+$F{clientes_Apellidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a0f6d565-8658-41b5-a446-1a7753f0e98f" x="55" y="85" width="149" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{rutas_CiudadOrigen}+"-"+$F{rutas_CiudadDestino}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="260d4dbf-28a4-45c8-a252-2e8d93927106" x="262" y="45" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{rutas_Precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5b0265c4-7895-419f-9cfb-998057a55d14" x="262" y="65" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{boletos_NPasajes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="36bdd4eb-abaa-45cd-b4ff-dc2bc6015cb7" x="262" y="85" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{boletos_NAsientos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0f7f23ac-0b32-4ef6-892c-e81311465227" x="282" y="112" width="80" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{boletos_Subtotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d20da225-21b6-4b1d-9a34-d902c04dc786" x="282" y="133" width="78" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{boletos_Descuento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="815b376f-3f86-414b-8460-d4d6f911fbf9" x="282" y="151" width="78" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{boletos_Total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+</jasperReport>
